@@ -58,3 +58,21 @@ The Python script provides an API endpoint at `/rain` that returns the rain stat
     "longitude": 100.3117683,
     "is_raining": false
 }
+```
+
+## Testing
+
+To run the tests, use the following commands:
+
+### Backend
+
+```bash
+python -m unittest tests/backend/test_main.py
+```
+
+### Frontend
+
+```bash
+cd tests/frontend
+npx jest
+```
