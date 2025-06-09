@@ -77,3 +77,32 @@ This application tracks the rain status for a specified location and notifies th
         ```tsx
         preload: true,
         ```
+
+3. How to enable gatetest for code check-ins:
+    - Step 1: Ensure your workflow has a name
+        - name: Test is_it_raining
+    - Step 2: Enable branch protection for main and/or develop
+        - Go to your GitHub repo.
+        - Click on Settings → Branches.
+        - Under Code and automation, click "Rules" and add "New ruleset".
+        - Set the Branch name pattern to main or develop (or use * for all branches).
+        - Save the rule.
+
+4. How to push after enabling gatetest:
+    - Create a new branch
+        ```bash
+        git checkout -b feature/my-new-change
+        ```
+    - Add and commit your changes
+        ```bash
+        git add .
+        git commit -m "Implement weather widget"
+        ```
+    - Push your new branch
+        ```bash
+        git push -u origin feature/my-new-change
+        ```
+    - Create a pull request
+        - Go to GitHub repo, Click "Compare & pull request"
+        - Select "base: `target_branch`", "compare: `feature/my-new-change`"
+        - Submit the PR
