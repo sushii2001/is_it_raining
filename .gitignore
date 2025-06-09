@@ -1,2 +1,6 @@
 *__pycache__
 radar_images
+node_modules/
+.next/
+dist/
+*.log

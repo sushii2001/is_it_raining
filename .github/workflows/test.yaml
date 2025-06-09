@@ -20,7 +20,7 @@ jobs:
         with:
           python-version: "3.9"
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r src/backend/requirements.txt
       - name: Run backend tests
         run: |
           python -m unittest discover -s tests -p "*_test.py"
@@ -29,13 +29,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Node.js
+      - name: Set up Node.js from .nvmrc
         uses: actions/setup-node@v3
         with:
-          node-version: "16"
+          node-version-file: './src/frontend/.nvmrc'
       - name: Install dependencies
         run: |
-          cd tests/frontend
+          cd src/frontend
           npm install
       - name: Run frontend tests
         run: |
