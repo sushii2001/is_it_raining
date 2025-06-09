@@ -1,0 +1,43 @@
+name: Test is_it_raining
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  backend-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+      - name: Install dependencies
+        run: pip install -r src/backend/requirements.txt
+      - name: Run backend tests
+        run: |
+          python -m unittest discover -s tests -p "*_test.py"
+
+  frontend-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Node.js from .nvmrc
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: './src/frontend/.nvmrc'
+      - name: Install dependencies
+        run: |
+          cd src/frontend
+          npm install
+      - name: Run frontend tests
+        run: |
+          cd tests/frontend
+          npx jest

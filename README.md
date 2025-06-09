@@ -1,10 +1,10 @@
-# Rain Tracker
+# Is It Raining?
 
 This application tracks the rain status for a specified location and notifies the user if it starts to rain.
 
 ## Prerequisites
 
-*   Python 3.6+
+*   Python 3.10+
 *   pip
 
 ## Installation
@@ -13,48 +13,67 @@ This application tracks the rain status for a specified location and notifies th
 
     ```bash
     git clone <repository_url>
-    cd isit_raining
+    cd is_it_raining
     ```
 
-2.  Install the dependencies:
+2. Setup python virtual environment:
+    ```bash
+    python -m venv is_it_raining_env
+    source is_it_raining_env/bin/activate.csh
+    ```
+
+3.  Install the dependencies:
 
     ```bash
-    pip install -r requirements.txt
+    pip install -r src/backend/requirements.txt
     ```
 
-## Usage
+## Backend
 
-1.  Run the Python script:
+1. Run the backend:
 
-    ```bash
-    python src/main.py
+    ```python
+    python src/backend/main.py
     ```
 
-2.  Open `index.html` in a browser.
+## Frontend
 
-## Configuration
+0. Initial setup. Refer [here](https://gist.github.com/cwsmith-160/e9c8ca80f23027f0495775aed77ec780) on how to setup `Choco`, `nvm`, `node` (Requires administrator access to cmd.exe)
+    ```
+    npx create-next-app@latest src/frontend --typescript
+    ```
 
-*   Modify the `locationName` variable in `index.html` to specify the location to track.
+1. Navigate to the frontend directory:
+    ```
+    cd src/frontend
+    ```
 
-## Debugging
+2. Install the dependencies:
+    ```
+    nvm use
+    npm install
+    ```
 
-*   Radar images are saved to the `radar_images` directory.
+3. Start the frontend:
+    ```
+    npm run dev
+    ```
 
-## API Endpoint
+## Tests
 
-The Python script provides an API endpoint at `/rain` that returns the rain status in JSON format.
+1. Run the tests:
+    ```python
+    python -m unittest .\tests\test_backend.py
+    ```
 
-*   URL: `http://localhost:5000/rain?location=<location>`
-*   Method: GET
-*   Parameters:
-    *   `location`: The location to check for rain.
+## FAQ
 
-## Example Response
+1. How to map backend localhost dynamically
+    - Refer to `frontend/next.config.ts` file
 
-```json
-{
-    "location": "Pulau Tikus, Penang",
-    "latitude": 5.4318216,
-    "longitude": 100.3117683,
-    "is_raining": false
-}
+2. How to fix `The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event`:
+    - Refer to `frontend/src/app/layout.tsx` file
+    - Add the following code snippet:
+        ```tsx
+        preload: true,
+        ```
