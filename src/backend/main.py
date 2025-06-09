@@ -43,7 +43,7 @@ def deg2num(lat_deg, lon_deg, zoom):
 def check_rain_py(location_name):
     skip = True
     if skip:
-        return {'is_raining': True, 'time': '2025-06-09 22:33:17', 'latitude': 3.1526589, 'longitude': 101.7022205, 'location': location_name, 'error': None}
+        return {'is_raining': False, 'time': '2025-06-09 22:33:17', 'latitude': 3.1526589, 'longitude': 101.7022205, 'location': location_name, 'error': None}
     else:
         zoom = 10
         try:
