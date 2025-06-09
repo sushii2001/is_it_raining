@@ -4,7 +4,7 @@ This application tracks the rain status for a specified location and notifies th
 
 ## Prerequisites
 
-*   Python 3.6+
+*   Python 3.10+
 *   pip
 
 ## Installation
